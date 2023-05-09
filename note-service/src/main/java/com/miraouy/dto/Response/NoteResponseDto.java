@@ -13,4 +13,5 @@ public class NoteResponseDto {
     private Float note;
     private Student student;
     private ModuleF module;
+
 }

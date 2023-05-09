@@ -45,7 +45,7 @@ public class NoteServiceImpl implements NoteService {
         System.out.println(module);
         System.out.println("helloooo****");
         Student student = studentClient.viewStudent(noteRequestDto.getApogee());
-        Long idfiliere = student.getFiliere().getId();
+        Long idfiliere = student.getFilier().getId();
         System.out.println(student);
         Note note = Note.builder()
                 .note(noteRequestDto.getNote())
@@ -75,6 +75,7 @@ public class NoteServiceImpl implements NoteService {
         Student student = studentClient.viewStudent(apogee);
         ModuleF module = moduleClient.viewModule(idModule);
         System.out.println(student.getApogee());
+
         NoteResponseDto noteResponseDto = NoteResponseDto
                 .builder()
                 .note(note.get().getNote())
