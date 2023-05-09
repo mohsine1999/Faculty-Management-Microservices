@@ -6,7 +6,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(name = "service-module", path = "/api/modules", url = "http://localhost:8200")
+@FeignClient(name = "service-module", path = "/api/moduleFs", url = "http://localhost:8081")
 public interface ModuleClient {
     @GetMapping("/{id}")
     ModuleF viewModule(@PathVariable Long id);
