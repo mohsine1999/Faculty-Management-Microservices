@@ -1,26 +1,24 @@
-package com.radouaneoubakhane.serviceinscription.model;
+package com.radouaneoubakhane.serviceinscription.dto;
 
 
 import com.radouaneoubakhane.serviceinscription.annotations.EnumNamePattern;
 import com.radouaneoubakhane.serviceinscription.model.enums.*;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
-@Entity
-@Table(name = "inscription_table")
-@Builder
-@Getter
-@Setter
-@NoArgsConstructor
+@Data
 @AllArgsConstructor
-public class Inscription {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+@NoArgsConstructor
+@Builder
+public class InscriptionRequestLST {
     //    LES INFORMARTIONS PERSONNELLES
 
     @NotBlank(message = "Le CIN est obligatoire")
@@ -41,7 +39,6 @@ public class Inscription {
             message = "Le genre doit etre valide"
     )
     @Enumerated(EnumType.STRING)
-    @Column(name = "genre")
     private Gender genre ;
 
     @NotBlank(message = "L'email est obligatoire")
@@ -49,12 +46,10 @@ public class Inscription {
     private String email;
 
     @Past(message = "La date de naissance doit etre dans le passe")
-    @Column(name = "date_naissance")
     private Date dateNaissance;
 
 
     @NotBlank(message = "Le lieu de naissance est obligatoire")
-    @Column(name = "lieu_naissance")
     private String lieuNaissance;
 
     @NotBlank(message = "L'addresse est obligatoire")
@@ -70,7 +65,6 @@ public class Inscription {
             message = "Le type de bac doit etre valide"
     )
     @Enumerated(EnumType.STRING)
-    @Column(name = "filiere_bac")
     private Bac filiereBac;
 
 
@@ -78,7 +72,6 @@ public class Inscription {
     @Positive(message = "La moyenne du bac doit etre positive")
     @Max(value = 20, message = "La moyenne du bac doit etre inferieure a 20")
     @Min(value = 0, message = "La moyenne du bac doit etre superieure a 0")
-    @Column(name = "moyenne_bac")
     private double moyenneBac;
 
 
@@ -87,7 +80,6 @@ public class Inscription {
             message = "La mention du bac doit etre valide"
     )
     @Enumerated(EnumType.STRING)
-    @Column(name = "mention_bac")
     private Mention mentionBac;
 
 
@@ -97,86 +89,57 @@ public class Inscription {
 
 
     @NotBlank(message = "L'etablissement du bac est obligatoire")
-    @Column(name = "etablissement_bac")
     private String etablissementBac;
 
 
     @NotBlank(message = "La ville du bac est obligatoire")
-    @Column(name = "ville_bac")
     private String villeBac;
 
 
     @NotBlank(message = "Le pays du bac est obligatoire")
-    @Column(name = "pays_bac")
     private String paysBac;
 
     //    LES INFORMATIONS DU DIPLOME DEUST
-
-
+    @EnumNamePattern(
+            regexp = "MIP|BCG|GE|GM",
+            message = "Le diplome deust doit etre valide"
+    )
     @Enumerated(EnumType.STRING)
-    @Column(name = "diplome_deust")
     private DiplomeDEUST diplomeDeust;
 
 
-
-    @Column(name = "moyenne_diplome")
+    @NotNull(message = "La moyenne du diplome deust est obligatoire")
+    @Positive(message = "La moyenne du diplome deust doit etre positive")
+    @Max(value = 20, message = "La moyenne du diplome deust doit etre inferieure a 20")
+    @Min(value = 0, message = "La moyenne du diplome deust doit etre superieure a 0")
     private double moyenneDiplome;
 
 
 
     @Enumerated(EnumType.STRING)
+    @EnumNamePattern(
+            regexp = "TRES_BIEN|BIEN|ASSEZ_BIEN|PASSABLE|INSUFFISANT",
+            message = "La mention du diplome deust doit etre valide"
+    )
     @Column(name = "mention_diplome")
     private Mention mentionDiplome;
 
 
-    @Column(name = "annee_diplome")
+    @NotBlank(message = "L'annee du diplome deust est obligatoire")
     private String anneeDiplome;
 
 
-    @Column(name = "etablissement_diplome")
+    @NotBlank(message = "L'etablissement du diplome deust est obligatoire")
     private String etablissementDiplome;
 
 
-    @Column(name = "ville_diplome")
+    @NotBlank(message = "La ville du diplome deust est obligatoire")
     private String villeDiplome;
 
 
-    @Column(name = "pays_diplome")
+    @NotBlank(message = "Le pays du diplome deust est obligatoire")
     private String paysDiplome;
 
-    //    LES INFORMARTIONS DE LA LICENCE
-
-    @Enumerated(EnumType.STRING)
-    private Licence licence;
-
-
-    private double moyenneLicence;
-
-
-    @Enumerated(EnumType.STRING)
-    private Mention mentionLicence;
-
-
-    @Column(name = "annee_licence")
-    private String anneeLicence;
-
-
-    @Column(name = "etablissement_licence")
-    private String etablissementLicence;
-
-
-    @Column(name = "ville_licence")
-    private String villeLicence;
-
-
-    @Column(name = "pays_licence")
-    private String paysLicence;
-
-    //    La FILIERE
-    @Positive(message = "La filiere est obligatoire")
-    @NotNull(message = "La filiere est obligatoire")
-    @Column(name = "filiere_id")
-    private Long filiereId;
 
     // Diplomat
     @NotNull(message = "Le diplomant est obligatoire")
@@ -187,12 +150,9 @@ public class Inscription {
     @Enumerated(EnumType.STRING)
     private Diplomat diplomat;
 
-    //    L'ETAT DE L'INSCRIPTION
-    @Column(name = "is_accepted")
-    private boolean isAccepted = false;
-    @Column(name = "is_refused")
-    private boolean isRefused = false;
-    @Column(name = "is_canceled")
-    private boolean isCanceled = false;
+    //    La FILIERE
+    @Positive(message = "La filiere est obligatoire")
+    @NotNull(message = "La filiere est obligatoire")
+    @Column(name = "filiere_id")
+    private Long filiereId;
 }
-

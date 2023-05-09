@@ -15,8 +15,10 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        if (inscriptionRepository.count() < 1) {
+        if (inscriptionRepository.count() < 3) {
             inscriptionRepository.save(InscriptionDataGenerator.generateInscription());
+            inscriptionRepository.save(InscriptionDataGenerator.generateInscriptionDeus());
+            inscriptionRepository.save(InscriptionDataGenerator.generateInscriptionLST());
         }
     }
 }
