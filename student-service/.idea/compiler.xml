@@ -7,27 +7,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="service-note" />
-        <module name="service-inscription" />
-        <module name="config-service" />
-        <module name="service-gateway" />
         <module name="StudentManagement" />
-        <module name="discovryServer" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="customer" target="17" />
-      <module name="test" target="17" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="StudentManagement" options="" />
-      <module name="config-service" options="-parameters" />
-      <module name="discovryServer" options="-parameters" />
-      <module name="service-gateway" options="-parameters" />
-      <module name="service-inscription" options="-parameters" />
-      <module name="service-note" options="-parameters" />
+      <module name="StudentManagement" options="-parameters" />
     </option>
   </component>
 </project>

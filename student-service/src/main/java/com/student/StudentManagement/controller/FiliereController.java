@@ -2,6 +2,7 @@ package com.student.StudentManagement.controller;
 
 import com.student.StudentManagement.dto.RequestFiliereDto;
 import com.student.StudentManagement.dto.RespenseFiliereDto;
+import com.student.StudentManagement.enumurations.Diplomat;
 import com.student.StudentManagement.model.Filiere;
 import com.student.StudentManagement.services.FiliereService;
 import lombok.RequiredArgsConstructor;
@@ -52,5 +53,9 @@ public class FiliereController {
     public RequestFiliereDto updateFiliere(@PathVariable Long id, @RequestBody RequestFiliereDto filiere) {
         return filiereService.updateFiliere(id,filiere);
 
+    }
+    @GetMapping("/getFiliereByDiplomat/{diplomat}")
+    public List<RespenseFiliereDto> getFiliereByDiplomat(@PathVariable(value = "diplomat") Diplomat diplomat){
+        return filiereService.getFiliereByDiplomat(diplomat);
     }
 }
