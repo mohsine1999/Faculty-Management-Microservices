@@ -4,13 +4,11 @@ import com.student.StudentManagement.model.Carriere;
 import com.student.StudentManagement.model.CarrierePojo;
 import com.student.StudentManagement.services.CarriereService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/carrieres")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequiredArgsConstructor
 public class CarriereController {
     private final CarriereService carriereService;
