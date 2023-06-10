@@ -18,6 +18,8 @@ import java.util.Optional;
 public class FiliereController {
     private final FiliereService filiereService;
 
+
+
     @PostMapping
     public RespenseFiliereDto createFiliere(@RequestBody Filiere filiere) {
         RespenseFiliereDto adResp = RespenseFiliereDto.builder().build();
@@ -25,8 +27,6 @@ public class FiliereController {
         BeanUtils.copyProperties(filiere, dto);
         RequestFiliereDto dto1 = filiereService.createFiliere(dto);
         BeanUtils.copyProperties(dto1, adResp);
-
-
         return adResp;
     }
 

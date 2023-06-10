@@ -2,6 +2,7 @@ package com.radouaneoubakhane.serviceinscription.controller;
 
 
 import com.radouaneoubakhane.serviceinscription.dto.*;
+import com.radouaneoubakhane.serviceinscription.openfeingClients.FiliereClient;
 import com.radouaneoubakhane.serviceinscription.service.InscriptionService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,11 +15,28 @@ import java.util.List;
 @RequestMapping("/api/v1/inscription")
 @RequiredArgsConstructor
 @Slf4j
+@CrossOrigin(origins = "http://localhost:4200")
 public class InscriptionController {
 
     private final InscriptionService inscriptionService;
 
+    private final FiliereClient filiereClient;
+
     // ====================  GET REQUESTS ====================
+    // getallFilieres
+    @GetMapping("/allFilieres")
+    @ResponseStatus(HttpStatus.OK)
+    public List<RespenseFiliereDto> getAllFilier() {
+        return filiereClient.viewFilieres();
+    }
+
+    //getFilierById
+    @GetMapping("/filier/{filierId}")
+    @ResponseStatus(HttpStatus.OK)
+    public RespenseFiliereDto getFilierById(@PathVariable Long filierId) {
+        return filiereClient.getFilierById(filierId);
+    }
+
     @GetMapping("/mst")
     @ResponseStatus(HttpStatus.OK)
     public List<InscriptionResponse> getAllInscriptions() {
@@ -145,4 +163,15 @@ public class InscriptionController {
         inscriptionService.acceptInscriptionMST(number);
     }
 
+    @DeleteMapping("/delreject")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteAllRejectedInscriptions() {
+        inscriptionService.deleteAllRejected(true);
+    }
+
+    @DeleteMapping("/delcancel")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteAllCanceledInscriptions() {
+        inscriptionService.deleteAllCanceled(true);
+    }
 }
