@@ -15,4 +15,6 @@ public interface InscriptionRepository extends JpaRepository<Inscription, Long> 
     List<Inscription> findAllByIsCanceled(boolean b);
 
     List<Inscription> findAllByDiplomat(Diplomat diplomat);
+
+
 }

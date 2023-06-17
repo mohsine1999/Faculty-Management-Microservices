@@ -65,8 +65,6 @@ public class NoteServiceImpl implements NoteService {
                 .build();
         return noteResponseDto;
     }
-
-
     // est regler
     @Override
     public NoteResponseDto findNoteByStudentAndModule(Long apogee, Long idModule) throws NoteNotFound {
@@ -84,7 +82,6 @@ public class NoteServiceImpl implements NoteService {
                 .build();
         return noteResponseDto;
     }
-
     // est regler
     @Override
     public List<NoteResponseDto> findNotesEtudiant(Long apogee) throws NoteNotFound {
@@ -133,7 +130,6 @@ public class NoteServiceImpl implements NoteService {
         return NoteResponseDto.builder()
                 .student(student)
                 .note(noteToUpdate.getNote())
-                // .idModule(idModule)
                 .build();
     }
 }

@@ -11,14 +11,14 @@
         <module name="service-gateway" />
         <module name="discovryServer" />
         <module name="service-note" />
-        <module name="StudentManagement (1)" />
         <module name="service-inscription" />
-        <module name="StudentManagement (2)" />
+        <module name="StudentManagement" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="customer" target="17" />
-      <module name="StudentManagement" target="17" />
+      <module name="StudentManagement (1)" target="17" />
+      <module name="StudentManagement (2)" target="17" />
       <module name="test" target="17" />
     </bytecodeTargetLevel>
   </component>
@@ -26,7 +26,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="StudentManagement" options="-parameters" />
       <module name="StudentManagement (1)" options="-parameters" />
-      <module name="StudentManagement (2)" options="-parameters" />
+      <module name="StudentManagement (2)" options="" />
       <module name="config-service" options="-parameters" />
       <module name="discovryServer" options="-parameters" />
       <module name="service-gateway" options="-parameters" />

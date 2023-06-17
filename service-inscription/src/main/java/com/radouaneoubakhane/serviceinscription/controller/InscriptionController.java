@@ -2,6 +2,7 @@ package com.radouaneoubakhane.serviceinscription.controller;
 
 
 import com.radouaneoubakhane.serviceinscription.dto.*;
+import com.radouaneoubakhane.serviceinscription.openfeingClients.FiliereClient;
 import com.radouaneoubakhane.serviceinscription.service.InscriptionService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,9 +15,11 @@ import java.util.List;
 @RequestMapping("/api/v1/inscription")
 @RequiredArgsConstructor
 @Slf4j
+@CrossOrigin(origins = "http://localhost:4200")
 public class InscriptionController {
 
     private final InscriptionService inscriptionService;
+
 
     // ====================  GET REQUESTS ====================
     @GetMapping("/mst")
@@ -24,17 +27,36 @@ public class InscriptionController {
     public List<InscriptionResponse> getAllInscriptions() {
         return inscriptionService.getAllInscriptionsMST();
     }
+
     @GetMapping("/deust")
     @ResponseStatus(HttpStatus.OK)
     public List<InscriptionResponseDEUST> getAllInscriptionsDEUST() {
         return inscriptionService.getAllInscriptionsDEUST();
     }
+
     @GetMapping("/lst")
     @ResponseStatus(HttpStatus.OK)
     public List<InscriptionResponseLST> getAllInscriptionsLST() {
         return inscriptionService.getAllInscriptionsLST();
     }
 
+
+    private final FiliereClient filiereClient;
+
+    // ====================  GET REQUESTS ====================
+    // getallFilieres
+    @GetMapping("/allFilieres")
+    @ResponseStatus(HttpStatus.OK)
+    public List<RespenseFiliereDto> getAllFilier() {
+        return filiereClient.viewFilieres();
+    }
+
+    //getFilierById
+    @GetMapping("/filier/{filierId}")
+    @ResponseStatus(HttpStatus.OK)
+    public RespenseFiliereDto getFilierById(@PathVariable Long filierId) {
+        return filiereClient.getFilierById(filierId);
+    }
 
 
     // ====================  GET REQUESTS BY ID ====================
@@ -45,25 +67,24 @@ public class InscriptionController {
     }
 
 
-
-
     // ====================  POST REQUESTS ====================
     @PostMapping("/mst")
     @ResponseStatus(HttpStatus.CREATED)
     public InscriptionResponse createInscription(@RequestBody InscriptionRequest inscriptionRequest) {
         return inscriptionService.createInscription(inscriptionRequest);
     }
+
     @PostMapping("/deust")
     @ResponseStatus(HttpStatus.CREATED)
     public InscriptionResponseDEUST createInscriptionDEUST(@RequestBody InscriptionRequestDEUST inscriptionRequest) {
         return inscriptionService.createInscriptionDEUST(inscriptionRequest);
     }
+
     @PostMapping("/lst")
     @ResponseStatus(HttpStatus.CREATED)
     public InscriptionResponseLST createInscriptionLST(@RequestBody InscriptionRequestLST inscriptionRequest) {
         return inscriptionService.createInscriptionLST(inscriptionRequest);
     }
-
 
 
     // ====================  PUT REQUESTS ====================
@@ -72,17 +93,18 @@ public class InscriptionController {
     public InscriptionResponse updateInscription(@PathVariable Long inscriptionId, @RequestBody InscriptionRequest inscriptionRequest) {
         return inscriptionService.updateInscription(inscriptionId, inscriptionRequest);
     }
+
     @PutMapping("/deust/{inscriptionId}")
     @ResponseStatus(HttpStatus.OK)
     public InscriptionResponseDEUST updateInscriptionDEUST(@PathVariable Long inscriptionId, @RequestBody InscriptionRequestDEUST inscriptionRequest) {
         return inscriptionService.updateInscriptionDEUST(inscriptionId, inscriptionRequest);
     }
+
     @PutMapping("/lst/{inscriptionId}")
     @ResponseStatus(HttpStatus.OK)
     public InscriptionResponseLST updateInscriptionLST(@PathVariable Long inscriptionId, @RequestBody InscriptionRequestLST inscriptionRequest) {
         return inscriptionService.updateInscriptionLST(inscriptionId, inscriptionRequest);
     }
-
 
 
     // ====================  DELETE REQUESTS ====================
@@ -93,18 +115,19 @@ public class InscriptionController {
     }
 
 
-
     // ====================  ACCEPT/REJECT/CANCEL REQUESTS ====================
     @GetMapping("/accept")
     @ResponseStatus(HttpStatus.OK)
     public List<InscriptionResponse> getAllAcceptedInscriptions() {
         return inscriptionService.getAllAcceptedInscriptions();
     }
+
     @GetMapping("/reject")
     @ResponseStatus(HttpStatus.OK)
     public List<InscriptionResponse> getAllRejectedInscriptions() {
         return inscriptionService.getAllRejectedInscriptions();
     }
+
     @GetMapping("/cancel")
     @ResponseStatus(HttpStatus.OK)
     public List<InscriptionResponse> getAllCanceledInscriptions() {
@@ -117,11 +140,13 @@ public class InscriptionController {
     public void acceptInscription(@PathVariable Long inscriptionId) {
         inscriptionService.acceptInscription(inscriptionId);
     }
+
     @PostMapping("/{inscriptionId}/reject")
     @ResponseStatus(HttpStatus.OK)
     public InscriptionResponse rejectInscription(@PathVariable Long inscriptionId) {
         return inscriptionService.rejectInscription(inscriptionId);
     }
+
     @PostMapping("/{inscriptionId}/cancel")
     @ResponseStatus(HttpStatus.OK)
     public InscriptionResponse cancelInscription(@PathVariable Long inscriptionId) {
@@ -135,15 +160,30 @@ public class InscriptionController {
     public void acceptInscriptionDEUST(@PathVariable Integer number) {
         inscriptionService.acceptInscriptionDEUST(number);
     }
+
     @PostMapping("/lst/accept/{number}")
     @ResponseStatus(HttpStatus.OK)
     public void acceptInscriptionLST(@PathVariable Integer number) {
         inscriptionService.acceptInscriptionLST(number);
     }
+
     @PostMapping("/mst/accept/{number}")
     @ResponseStatus(HttpStatus.OK)
     public void acceptInscriptionMST(@PathVariable Integer number) {
         inscriptionService.acceptInscriptionMST(number);
+    }
+
+
+    @DeleteMapping("/delreject")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteAllRejectedInscriptions() {
+        inscriptionService.deleteAllRejected(true);
+    }
+
+    @DeleteMapping("/delcancel")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteAllCanceledInscriptions() {
+        inscriptionService.deleteAllCanceled(true);
     }
 
 }

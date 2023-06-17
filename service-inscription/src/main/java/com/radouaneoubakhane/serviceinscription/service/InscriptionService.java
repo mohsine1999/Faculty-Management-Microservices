@@ -554,5 +554,18 @@ return InscriptionResponse.builder()
 
         return mapInscriptionToInscriptionResponseLST(savedInscription);
     }
+
+    public void deleteAllRejected(boolean isRejected){
+        log.info("Deleting all rejected inscriptions");
+        List<Inscription> inscriptions = inscriptionRepository.findAllByIsRefused(isRejected);
+        inscriptionRepository.deleteAll(inscriptions);
+    }
+
+    public void deleteAllCanceled(boolean b){
+        log.info("Deleting all canceled inscriptions");
+        List<Inscription> inscriptions = inscriptionRepository.findAllByIsCanceled(b);
+        inscriptionRepository.deleteAll(inscriptions);
+    }
+
 }
 
