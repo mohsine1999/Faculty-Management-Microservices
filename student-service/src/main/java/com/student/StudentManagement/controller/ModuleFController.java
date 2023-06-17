@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/moduleFs")
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class ModuleFController {
     private final ModuleFService moduleFService;
 

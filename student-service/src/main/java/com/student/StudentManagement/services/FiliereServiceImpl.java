@@ -39,6 +39,7 @@ public class FiliereServiceImpl implements FiliereService {
             RespenseFiliereDto response = RespenseFiliereDto.builder()
                     .id(i.getId())
                     .name(i.getName())
+                    .diplomat(i.getDiplomat())
                     .modules(i.getModules())
                     .build();
             respenseFiliereDtos.add(response);
@@ -60,6 +61,7 @@ public class FiliereServiceImpl implements FiliereService {
             respenseFiliereDto = RespenseFiliereDto.builder()
                     .id(f.getId())
                     .name(f.getName())
+                    .diplomat(f.getDiplomat())
                     .build();
             respenseFiliereDtos.add(respenseFiliereDto);
 
