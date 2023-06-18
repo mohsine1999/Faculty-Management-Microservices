@@ -8,5 +8,6 @@ import lombok.Data;
 public class RespenseModuleFDto {
     private Long id;
     private String name ;
+    private Long idFiliere;
 
 }

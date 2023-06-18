@@ -110,6 +110,7 @@ public class ModuleFServiceImpl implements ModuleFService {
             RespenseModuleFDto response = RespenseModuleFDto.builder()
                     .id(i.getId())
                     .name(i.getName())
+                    .idFiliere(i.getFiliere().getId())
                     .build();
             dtos.add(response);
         }
