@@ -1,7 +1,10 @@
 package com.student.StudentManagement.controller;
 
+import com.student.StudentManagement.dto.RequestFiliereDto;
 import com.student.StudentManagement.dto.RequestModuleFDto;
+import com.student.StudentManagement.dto.RespenseFiliereDto;
 import com.student.StudentManagement.dto.RespenseModuleFDto;
+import com.student.StudentManagement.enumurations.Diplomat;
 import com.student.StudentManagement.model.Filiere;
 import com.student.StudentManagement.model.ModuleF;
 import com.student.StudentManagement.model.ModulePojo;
@@ -46,5 +49,11 @@ public class ModuleFController {
     @PutMapping("/{id}")
     public RequestModuleFDto updateModuleF(@PathVariable Long id , @RequestBody RequestModuleFDto requestModuleFDto){
         return moduleFService.updateModuleF(id,requestModuleFDto);
+    }
+
+
+    @GetMapping("/getModuleByFiliere/{filiereId}")
+    public List<RespenseModuleFDto> getModuleFByFiliere(@PathVariable Long filiereId){
+        return moduleFService.getModuleByFiliere(filiereId);
     }
 }

@@ -1,7 +1,10 @@
 package com.student.StudentManagement.services;
 
+import com.student.StudentManagement.dto.RequestFiliereDto;
 import com.student.StudentManagement.dto.RequestModuleFDto;
+import com.student.StudentManagement.dto.RespenseFiliereDto;
 import com.student.StudentManagement.dto.RespenseModuleFDto;
+import com.student.StudentManagement.enumurations.Diplomat;
 import com.student.StudentManagement.model.ModuleF;
 import com.student.StudentManagement.model.ModulePojo;
 
@@ -19,4 +22,7 @@ public interface ModuleFService {
     RequestModuleFDto updateModuleF(Long id,RequestModuleFDto moduleF);
 
     void deleteModuleF(Long id);
+
+    List<RespenseModuleFDto> getModuleByFiliere(Long id);
+
 }

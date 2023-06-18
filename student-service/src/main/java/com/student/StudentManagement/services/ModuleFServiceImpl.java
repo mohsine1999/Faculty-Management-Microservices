@@ -79,15 +79,15 @@ public class ModuleFServiceImpl implements ModuleFService {
     @Override
     public RequestModuleFDto updateModuleF(Long id, RequestModuleFDto requestModuleFDto) {
 
-        ModuleF moduleF = moduleFRepository.findById(id).orElseThrow(()->new StudentServiceRequestException("module not found !"));
+        ModuleF moduleF = moduleFRepository.findById(id).orElseThrow(() -> new StudentServiceRequestException("module not found !"));
         RequestModuleFDto dto = RequestModuleFDto.builder().build();
-        BeanUtils.copyProperties(moduleF,dto);
-        if(requestModuleFDto.getName()!=null) dto.setName(requestModuleFDto.getName());
-        if(requestModuleFDto.getFiliere()!=null) dto.setFiliere(requestModuleFDto.getFiliere());
+        BeanUtils.copyProperties(moduleF, dto);
+        if (requestModuleFDto.getName() != null) dto.setName(requestModuleFDto.getName());
+        if (requestModuleFDto.getFiliere() != null) dto.setFiliere(requestModuleFDto.getFiliere());
 
-        BeanUtils.copyProperties(dto,moduleF);
+        BeanUtils.copyProperties(dto, moduleF);
         ModuleF newModule = moduleFRepository.save(moduleF);
-        BeanUtils.copyProperties(newModule,dto);
+        BeanUtils.copyProperties(newModule, dto);
         return dto;
         //ok
 
@@ -98,4 +98,21 @@ public class ModuleFServiceImpl implements ModuleFService {
     public void deleteModuleF(Long id) {
         moduleFRepository.deleteById(id);
     }
+
+    @Override
+    public List<RespenseModuleFDto> getModuleByFiliere(Long id) {
+        Filiere filiere = filierRepository.findById(id)
+                .orElseThrow(() -> new StudentServiceRequestException("Filiere Not Found"));
+
+        List<ModuleF> modules = moduleFRepository.getModuleFByFiliere(filiere);
+        List<RespenseModuleFDto> dtos = new ArrayList<>();
+        for (ModuleF i : modules) {
+            RespenseModuleFDto response = RespenseModuleFDto.builder()
+                    .name(i.getName())
+                    .build();
+            dtos.add(response);
+        }
+        return dtos;
+    }
+
 }
