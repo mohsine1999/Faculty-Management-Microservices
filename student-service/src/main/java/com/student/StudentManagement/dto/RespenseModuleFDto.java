@@ -6,6 +6,7 @@ import lombok.Data;
 @Data
 @Builder
 public class RespenseModuleFDto {
+    private Long id;
     private String name ;
 
 }

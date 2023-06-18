@@ -108,6 +108,7 @@ public class ModuleFServiceImpl implements ModuleFService {
         List<RespenseModuleFDto> dtos = new ArrayList<>();
         for (ModuleF i : modules) {
             RespenseModuleFDto response = RespenseModuleFDto.builder()
+                    .id(i.getId())
                     .name(i.getName())
                     .build();
             dtos.add(response);
