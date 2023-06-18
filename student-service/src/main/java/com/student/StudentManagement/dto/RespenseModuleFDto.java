@@ -7,5 +7,6 @@ import lombok.Data;
 @Builder
 public class RespenseModuleFDto {
     private String name ;
+    private Long idFiliere;
 
 }

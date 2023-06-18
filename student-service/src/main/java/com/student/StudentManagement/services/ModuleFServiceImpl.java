@@ -109,6 +109,7 @@ public class ModuleFServiceImpl implements ModuleFService {
         for (ModuleF i : modules) {
             RespenseModuleFDto response = RespenseModuleFDto.builder()
                     .name(i.getName())
+                    .idFiliere(i.getFiliere().getId())
                     .build();
             dtos.add(response);
         }
