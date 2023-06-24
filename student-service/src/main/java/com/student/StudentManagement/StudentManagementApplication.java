@@ -4,6 +4,7 @@ import com.student.StudentManagement.enumurations.Diplomat;
 import com.student.StudentManagement.model.Filiere;
 import com.student.StudentManagement.model.ModuleF;
 import com.student.StudentManagement.repository.FilierRepository;
+import com.student.StudentManagement.repository.ModuleFRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,7 +20,7 @@ public class StudentManagementApplication {
 	}
 
 	@Bean
-	CommandLineRunner start(FilierRepository filierRepository) {
+	CommandLineRunner start(FilierRepository filierRepository, ModuleFRepository moduleFRepository) {
 		return args -> {
 
 			Filiere filiere1 = Filiere.builder()
@@ -184,8 +185,118 @@ public class StudentManagementApplication {
 					.diplomat(Diplomat.MST)
 					.build();
 			filierRepository.save(filiere23);
-			/*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+			/*:::::::::::::: Les modules :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+//			ModuleF m1 = ModuleF.builder()
+//					.id(1L)
+//					.name("Langues et communication 1")
+//					.filiere(filiere1)
+//					.build();
+//			moduleFRepository.save(m1);
 
+			String[] modules = {
+					"Langues et communication 1",
+					"Algorithmique et Programmation 1",
+					"Analyse 1 : Fonction d’une variable réelle",
+					"Mécanique du point et optique géométrique",
+					"Algorithmique et Programmation 2",
+					"Analyse 2 : Calcul intégral et équations différentielles",
+					"Semestre 2",
+					"Langues et communication 2",
+					"Electricité",
+					"Algèbre 1 : Polynômes et espaces vectoriels",
+					"Structure de la matière",
+					"Circuits électriques et Electronique",
+					"Algèbre 2 : Réduction des endomorphismes et formes quadratiques",
+					"Gestion",
+					"Mécanique des solides",
+					"Analyse Numérique",
+					"Electronique",
+					"Thermodynamique",
+					"Métrologie et instrumentation",
+					"Électrotechnique",
+					"Fabrication Mécanique",
+					"Statistique descriptive/probabilités",
+					"Automatique",
+					"Informatique 3",
+					"Construction mécanique"
+			};
+
+			for (String moduleName : modules) {
+				ModuleF module = ModuleF.builder()
+						.id(moduleFRepository.count() + 1)
+						.name(moduleName)
+						.filiere(filiere1)
+						.build();
+				moduleFRepository.save(module);
+			}
+
+			String[] modules2 = {
+					"Langues et Communication",
+					"Optique et Radioactivité",
+					"Structure de la matière",
+					"Algèbre",
+					"Biologie cellulaire",
+					"Cosmologie et Géodynamique interne",
+					"Langues et Communication 2",
+					"Thermodynamique / Mécanique des fluides",
+					"Réactivité chimique",
+					"Analyse",
+					"Biologie animale",
+					"Géodynamique externe",
+					"Langues et Communication 3",
+					"Electricité",
+					"Bases de Données",
+					"Probabilités et Statistiques",
+					"Biologie végétale",
+					"Stratigraphie, paléontologie-environnement",
+					"Biochimie structurale",
+					"Chimie Organique 1",
+					"Chimie Minérale 1",
+					"Microbiologie",
+					"Tectonique",
+					"Biochimie métabolique"
+			};
+
+			for (String moduleName : modules2) {
+				ModuleF module = ModuleF.builder()
+						.id(moduleFRepository.count() + 1)
+						.name(moduleName)
+						.filiere(filiere2)
+						.build();
+				moduleFRepository.save(module);
+			}
+
+
+			String[] modules3 = {
+					"Recherche opérationnelle I",
+					"Environnement professionnel",
+					"Système Linux",
+					"Base de données relationnelles",
+					"Environnement Java",
+					"Analyse de données et mathématiques financières",
+					"Recherche opérationnelle II",
+					"Administration des bases de données sous oracle",
+					"Datamining",
+					"Bases de données multimédia",
+					"J2EE",
+					"Administration réseaux",
+					"Processus de décision Markovien",
+					"Intelligence Artificielle",
+					"Datawarehouse",
+					"Web sémantique et mining",
+					"Cryptographie/ Sécurité",
+					"Programmation Web avancée",
+					"Projet de Fin d’études"
+			};
+
+			for (String moduleName : modules3) {
+				ModuleF module = ModuleF.builder()
+						.id(moduleFRepository.count() + 1)
+						.name(moduleName)
+						.filiere(filiere16)
+						.build();
+				moduleFRepository.save(module);
+			}
 
 
 
