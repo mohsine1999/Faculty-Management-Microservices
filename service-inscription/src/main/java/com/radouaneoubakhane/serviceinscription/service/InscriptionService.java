@@ -127,9 +127,15 @@ public class InscriptionService {
 
     private EtudientRequest mapInscriptionToEtudientRequest(Inscription inscription) {
 
+        long apogee = UUID.randomUUID().getMostSignificantBits() & Long.MAX_VALUE;
+        // reduce the apogee to 7 digits
+        while (apogee > 10000000) {
+            apogee /= 10;
+        }
+
         return EtudientRequest.builder()
                 .cin(inscription.getCin())
-                .apogee(UUID.randomUUID().getMostSignificantBits() & Long.MAX_VALUE)
+                .apogee(apogee)
                 .nom(inscription.getNom())
                 .prenom(inscription.getPrenom())
                 .cne(inscription.getCne())
