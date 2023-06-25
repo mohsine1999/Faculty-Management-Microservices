@@ -1,10 +1,14 @@
 package com.student.StudentManagement;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.student.StudentManagement.enumurations.Diplomat;
 import com.student.StudentManagement.model.Filiere;
 import com.student.StudentManagement.model.ModuleF;
+import com.student.StudentManagement.model.StudentPojo;
 import com.student.StudentManagement.repository.FilierRepository;
 import com.student.StudentManagement.repository.ModuleFRepository;
+import com.student.StudentManagement.repository.StudentRepository;
+import com.student.StudentManagement.services.StudentService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,7 +24,7 @@ public class StudentManagementApplication {
 	}
 
 	@Bean
-	CommandLineRunner start(FilierRepository filierRepository, ModuleFRepository moduleFRepository) {
+	CommandLineRunner start(FilierRepository filierRepository, ModuleFRepository moduleFRepository, StudentService service) {
 		return args -> {
 
 			Filiere filiere1 = Filiere.builder()
@@ -296,6 +300,53 @@ public class StudentManagementApplication {
 						.filiere(filiere16)
 						.build();
 				moduleFRepository.save(module);
+			}
+
+
+			String jsonData = "[\n";
+			for (int i = 1; i <= 10; i++) {
+				jsonData += "    {\n" +
+						"        \"cin\": \"IU74688" + i + "\",\n" +
+						"        \"apogee\": 880003" + i + ",\n" +
+						"        \"nom\": \"HaJJar" + i + "\",\n" +
+						"        \"prenom\": \"Mosine" + i + "\",\n" +
+						"        \"cne\": \"L478889" + i + "\",\n" +
+						"        \"email\": \"hajar" + i + ".mosine@gmail.com\",\n" +
+						"        \"phone\": \"5678900" + i + "\",\n" +
+						"        \"dateNaissance\": \"\",\n" +
+						"        \"lieuNaissance\": \"fghjkl\",\n" +
+						"        \"adresse\": \"ds\",\n" +
+						"        \"genre\": \"MALE\",\n" +
+						"        \"idFiliere\": 1\n" +
+						"    }";
+				if (i != 10) {
+					jsonData += ",";
+				}
+				jsonData += "\n";
+			}
+			jsonData += "]";
+
+
+			ObjectMapper objectMapper = new ObjectMapper();
+			StudentPojo[] students = objectMapper.readValue(jsonData, StudentPojo[].class);
+
+			for (StudentPojo student : students) {
+				StudentPojo entity = StudentPojo.builder()
+						.cin(student.getCin())
+						.apogee(student.getApogee())
+						.nom(student.getNom())
+						.prenom(student.getPrenom())
+						.cne(student.getCne())
+						.email(student.getEmail())
+						.phone(student.getPhone())
+						.dateNaissance(student.getDateNaissance())
+						.lieuNaissance(student.getLieuNaissance())
+						.adresse(student.getAdresse())
+						.genre(student.getGenre())
+						.idFiliere(student.getIdFiliere())
+						.build();
+
+				service.saveStudent(entity);
 			}
 
 
