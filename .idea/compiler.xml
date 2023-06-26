@@ -7,16 +7,22 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="discovryServer" />
         <module name="service-note" />
         <module name="service-inscription" />
-        <module name="config-service" />
-        <module name="service-gateway" />
         <module name="StudentManagement" />
-        <module name="discovryServer" />
+        <module name="config" />
+        <module name="gateway" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="conff" target="17" />
+      <module name="config-service" target="17" />
+      <module name="configur" target="17" />
       <module name="customer" target="17" />
+      <module name="gateway (1)" target="17" />
+      <module name="gateway (2)" target="17" />
+      <module name="service-gateway" target="17" />
       <module name="StudentManagement (1)" target="17" />
       <module name="StudentManagement (2)" target="17" />
       <module name="test" target="17" />
@@ -27,8 +33,13 @@
       <module name="StudentManagement" options="-parameters" />
       <module name="StudentManagement (1)" options="-parameters" />
       <module name="StudentManagement (2)" options="" />
+      <module name="conff" options="-parameters" />
+      <module name="config" options="-parameters" />
       <module name="config-service" options="-parameters" />
       <module name="discovryServer" options="-parameters" />
+      <module name="gateway" options="-parameters" />
+      <module name="gateway (1)" options="-parameters" />
+      <module name="gateway (2)" options="-parameters" />
       <module name="service-gateway" options="-parameters" />
       <module name="service-inscription" options="-parameters" />
       <module name="service-note" options="-parameters" />

@@ -21,9 +21,16 @@ public class Security extends KeycloakWebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.csrf().disable();
-        http.authorizeRequests().antMatchers("/api/notes/students/**").permitAll();
+        http.authorizeRequests().antMatchers("/api/notes/**").permitAll();
         http.authorizeRequests().anyRequest().permitAll();
+        http.authorizeRequests().antMatchers("/login").permitAll();
         http.headers().frameOptions().disable();
+        http.authorizeRequests()
+                .antMatchers("/login").denyAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .permitAll();
     }
 
     @Override

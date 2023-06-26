@@ -15,38 +15,9 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-
-        inscriptionRepository.save(InscriptionDataGenerator.generateInscription());
-        inscriptionRepository.save(InscriptionDataGenerator.generateInscriptionDeus());
-        inscriptionRepository.save(InscriptionDataGenerator.generateInscriptionLST());
-
-        inscriptionRepository.save(InscriptionDataGenerator.generateInscription());
-        inscriptionRepository.save(InscriptionDataGenerator.generateInscriptionDeus());
-        inscriptionRepository.save(InscriptionDataGenerator.generateInscriptionLST());
-
-        inscriptionRepository.save(InscriptionDataGenerator.generateInscription());
-        inscriptionRepository.save(InscriptionDataGenerator.generateInscriptionDeus());
-        inscriptionRepository.save(InscriptionDataGenerator.generateInscriptionLST());
-
-        inscriptionRepository.save(InscriptionDataGenerator.generateInscription());
-        inscriptionRepository.save(InscriptionDataGenerator.generateInscriptionDeus());
-        inscriptionRepository.save(InscriptionDataGenerator.generateInscriptionLST());
-
-        inscriptionRepository.save(InscriptionDataGenerator.generateInscription());
-        inscriptionRepository.save(InscriptionDataGenerator.generateInscriptionDeus());
-        inscriptionRepository.save(InscriptionDataGenerator.generateInscriptionLST());
-
-        inscriptionRepository.save(InscriptionDataGenerator.generateInscription());
-        inscriptionRepository.save(InscriptionDataGenerator.generateInscriptionDeus());
-        inscriptionRepository.save(InscriptionDataGenerator.generateInscriptionLST());
-
-        inscriptionRepository.save(InscriptionDataGenerator.generateInscription());
-        inscriptionRepository.save(InscriptionDataGenerator.generateInscriptionDeus());
-        inscriptionRepository.save(InscriptionDataGenerator.generateInscriptionLST());
-
-        inscriptionRepository.save(InscriptionDataGenerator.generateInscription());
-        inscriptionRepository.save(InscriptionDataGenerator.generateInscriptionDeus());
-        inscriptionRepository.save(InscriptionDataGenerator.generateInscriptionLST());
+        inscriptionRepository.saveAll(InscriptionDataGenerator.generateInscription());
+        inscriptionRepository.saveAll(InscriptionDataGenerator.generateInscriptionDeus());
+        inscriptionRepository.saveAll(InscriptionDataGenerator.generateInscriptionLST());
 
     }
 }

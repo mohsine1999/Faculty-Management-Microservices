@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/conff/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/config-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/config-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/config/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/config/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/customer/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/customer/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/discovery-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/discovery-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gateway-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gateway-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gateway/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/note-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/note-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/service-inscription/src/main/java" charset="UTF-8" />

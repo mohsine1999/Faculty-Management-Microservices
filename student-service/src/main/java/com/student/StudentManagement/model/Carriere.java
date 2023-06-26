@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
 
 @Entity(name = "carriere")
-@Table(uniqueConstraints=@UniqueConstraint( columnNames={"diplomat", "student_id"}))
 @Data
 @Builder
 @AllArgsConstructor

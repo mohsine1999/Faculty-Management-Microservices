@@ -13,7 +13,6 @@ import jakarta.persistence.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"name", "filiere_id"}))
 public class ModuleF {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

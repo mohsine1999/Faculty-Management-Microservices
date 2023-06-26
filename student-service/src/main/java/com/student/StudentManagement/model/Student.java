@@ -22,15 +22,15 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique = true)
+    
     private String cin;
-    @Column(unique = true)
+    
     private Long apogee;
     private String nom;
     private String prenom;
-    @Column(unique = true)
+    
     private String cne;
-    @Column(unique = true)
+    
     private String email;
     private String phone;
     private Date dateNaissance;

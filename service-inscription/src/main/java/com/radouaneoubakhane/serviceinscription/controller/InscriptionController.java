@@ -6,6 +6,7 @@ import com.radouaneoubakhane.serviceinscription.openfeingClients.FiliereClient;
 import com.radouaneoubakhane.serviceinscription.service.InscriptionService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 @CrossOrigin(origins = "http://localhost:4200")
+@RefreshScope
 public class InscriptionController {
 
     private final InscriptionService inscriptionService;
@@ -77,6 +79,7 @@ public class InscriptionController {
     @PostMapping("/deust")
     @ResponseStatus(HttpStatus.CREATED)
     public InscriptionResponseDEUST createInscriptionDEUST(@RequestBody InscriptionRequestDEUST inscriptionRequest) {
+        System.out.println("je suis a inscr");
         return inscriptionService.createInscriptionDEUST(inscriptionRequest);
     }
 

@@ -115,7 +115,9 @@ public class InscriptionService {
                 .orElseThrow(() -> new InscriptionNotFoundException("Inscription not found"));
 
         if (!inscription.isCanceled() && !inscription.isRefused() && !inscription.isAccepted()) {
+            System.out.println("hello debut ");
             etudientClient.SaveStudent(mapInscriptionToEtudientRequest(inscription));
+            System.out.println("hello fin  ");
             inscription.setAccepted(true);
             inscription.setRefused(false);
             inscriptionRepository.save(inscription);
