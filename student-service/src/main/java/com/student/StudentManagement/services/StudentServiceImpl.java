@@ -98,6 +98,20 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public RequestStudentDto getStudentByEmail(String email) {
+        RequestStudentDto dto = RequestStudentDto.builder().build();
+        Optional<Student> opt = Optional.ofNullable(studentRepository.getStudentByEmail(email));
+        Student student;
+        if (opt.isPresent()) {
+            student = opt.get();
+        } else {
+            throw new StudentServiceRequestException("student not found for Email : "+email);
+        }
+        BeanUtils.copyProperties(student, dto);
+        return dto;
+    }
+
+    @Override
     public RequestStudentDto updateStudent(Long id, RequestStudentDto requestStudentDto) {
         Student student = studentRepository.findById(id).orElseThrow(() -> new StudentServiceRequestException("student not found !"));
         RequestStudentDto dto = RequestStudentDto.builder().build();

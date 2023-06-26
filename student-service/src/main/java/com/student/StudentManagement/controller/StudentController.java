@@ -5,6 +5,7 @@ import com.student.StudentManagement.dto.RespenseStudentDto;
 import com.student.StudentManagement.enumurations.Diplomat;
 import com.student.StudentManagement.exceptions.StudentServiceRequestException;
 import com.student.StudentManagement.model.Carriere;
+import com.student.StudentManagement.model.Student;
 import com.student.StudentManagement.model.StudentPojo;
 import com.student.StudentManagement.repository.FilierRepository;
 import com.student.StudentManagement.services.StudentService;
@@ -48,6 +49,16 @@ public class StudentController {
         }
         return studentService.getStudentByApogee(apogee);
     }
+
+    @GetMapping("/getStudentByEmail/{email}")
+    public RequestStudentDto getStudentByEmail(@PathVariable(value = "email") String email)  {
+        if (email.trim().isEmpty()) {
+            throw new StudentServiceRequestException("email value is missing");
+        }
+
+        return studentService.getStudentByEmail(email);
+    }
+
 
     @DeleteMapping("/{apogee}")
     public void deleteStudent(@PathVariable(value = "apogee") Long apogee) {
