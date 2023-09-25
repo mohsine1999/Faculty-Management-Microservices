@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/students")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*",allowedHeaders = "*")
 @RequiredArgsConstructor
 public class StudentController {
     private final StudentService studentService;
@@ -29,13 +29,13 @@ public class StudentController {
 
     }
 
-    @GetMapping("/getStudents")
+    @GetMapping
     public List<RespenseStudentDto> viewStudents() {
         return studentService.getAllStudents();
 
     }
 
-    @GetMapping("/getStudent/{apogee}")
+    @GetMapping("/{apogee}")
     public RequestStudentDto viewStudent(@PathVariable(value = "apogee") String apogeeStr)  {
         if (apogeeStr == null || apogeeStr.trim().isEmpty()) {
             throw new StudentServiceRequestException("Apogee value is missing");

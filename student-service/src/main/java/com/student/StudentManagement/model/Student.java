@@ -28,9 +28,7 @@ public class Student {
     private Long apogee;
     private String nom;
     private String prenom;
-    
     private String cne;
-    
     private String email;
     private String phone;
     private Date dateNaissance;

@@ -11,8 +11,10 @@
         <module name="service-note" />
         <module name="service-inscription" />
         <module name="StudentManagement" />
+        <module name="user-service" />
         <module name="config" />
         <module name="gateway" />
+        <module name="security-OAuth2" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -22,7 +24,10 @@
       <module name="customer" target="17" />
       <module name="gateway (1)" target="17" />
       <module name="gateway (2)" target="17" />
+      <module name="security-service" target="17" />
+      <module name="SecurityBySpringSecurity" target="17" />
       <module name="service-gateway" target="17" />
+      <module name="service-security" target="17" />
       <module name="StudentManagement (1)" target="17" />
       <module name="StudentManagement (2)" target="17" />
       <module name="test" target="17" />
@@ -30,6 +35,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="SecurityBySpringSecurity" options="-parameters" />
       <module name="StudentManagement" options="-parameters" />
       <module name="StudentManagement (1)" options="-parameters" />
       <module name="StudentManagement (2)" options="" />
@@ -40,9 +46,13 @@
       <module name="gateway" options="-parameters" />
       <module name="gateway (1)" options="-parameters" />
       <module name="gateway (2)" options="-parameters" />
+      <module name="security-OAuth2" options="-parameters" />
+      <module name="security-service" options="-parameters" />
       <module name="service-gateway" options="-parameters" />
       <module name="service-inscription" options="-parameters" />
       <module name="service-note" options="-parameters" />
+      <module name="service-security" options="-parameters" />
+      <module name="user-service" options="-parameters" />
     </option>
   </component>
 </project>

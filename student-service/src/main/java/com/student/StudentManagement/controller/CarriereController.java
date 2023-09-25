@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/carrieres")
 @RequiredArgsConstructor
-@CrossOrigin("*")
+@CrossOrigin(origins = "*",allowedHeaders = "*")
 public class CarriereController {
     private final CarriereService carriereService;
     @PostMapping

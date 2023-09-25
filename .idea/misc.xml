@@ -11,23 +11,26 @@
         <option value="$PROJECT_DIR$/../Microservices/student-service/pom.xml" />
         <option value="$PROJECT_DIR$/../student-service/pom.xml" />
         <option value="$PROJECT_DIR$/student-service/pom.xml" />
-        <option value="$PROJECT_DIR$/../Faculty-Management-Microservices/config-service/pom.xml" />
-        <option value="$PROJECT_DIR$/../Faculty-Management-Microservices/config/pom.xml" />
-        <option value="$PROJECT_DIR$/conff/pom.xml" />
-        <option value="$PROJECT_DIR$/../Faculty-Management-Microservices/gateway/pom.xml" />
-        <option value="$PROJECT_DIR$/gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/config-service/pom.xml" />
         <option value="$PROJECT_DIR$/config/pom.xml" />
+        <option value="$PROJECT_DIR$/conff/pom.xml" />
+        <option value="$PROJECT_DIR$/gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/SecurityBySpringSecurity/pom.xml" />
+        <option value="$PROJECT_DIR$/security-service/pom.xml" />
+        <option value="$PROJECT_DIR$/service-security/pom.xml" />
+        <option value="$PROJECT_DIR$/security-OAuth2/pom.xml" />
+        <option value="$PROJECT_DIR$/user-service/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/SecurityBySpringSecurity/pom.xml" />
         <option value="$PROJECT_DIR$/conff/pom.xml" />
+        <option value="$PROJECT_DIR$/config-service/pom.xml" />
         <option value="$PROJECT_DIR$/customer/pom.xml" />
         <option value="$PROJECT_DIR$/gateway-service/pom.xml" />
+        <option value="$PROJECT_DIR$/security-service/pom.xml" />
         <option value="$PROJECT_DIR$/test/pom.xml" />
-        <option value="$PROJECT_DIR$/../Faculty-Management-Microservices/config-service/pom.xml" />
-        <option value="$PROJECT_DIR$/../Faculty-Management-Microservices/config/pom.xml" />
-        <option value="$PROJECT_DIR$/../Faculty-Management-Microservices/gateway/pom.xml" />
         <option value="$PROJECT_DIR$/../Microservices/student-service/pom.xml" />
       </set>
     </option>

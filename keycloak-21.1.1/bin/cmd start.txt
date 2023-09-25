@@ -1,5 +1,0 @@
-cd /// bin de keycloak apres lancer
-./kc.sh start-dev
-
-
-code et user 'miraouy'

@@ -15,7 +15,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/filieres")
 @RequiredArgsConstructor
-@CrossOrigin("*")
+@CrossOrigin(origins = "*",allowedHeaders = "*")
 public class FiliereController {
     private final FiliereService filiereService;
 

@@ -7,12 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
-<<<<<<< HEAD
 @FeignClient(value = "SERVICE-ETUDIANT")
-=======
-@FeignClient(name = "etudient-service", url = "http://localhost:8081", path = "/api/students")
+//@FeignClient(name = "etudient-service", url = "http://localhost:8081", path = "/api/students")
 
->>>>>>> origin/main
 public interface EtudientClient {
     @PostMapping( "/api/students")
     void SaveStudent(EtudientRequest etudientRequest);
